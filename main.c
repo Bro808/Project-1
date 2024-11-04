@@ -46,7 +46,7 @@ void *student(void *id) {
             pthread_mutex_unlock(&mutex);
         } else {
             pthread_mutex_unlock(&mutex); // Unlock if no room to wait
-            printf("Student %d found no chairs, going back to program.\n", student_id);
+            printf("Student %d found no chairs, going back to studying.\n", student_id);
         }
     }
 }
@@ -93,7 +93,7 @@ int main() {
         pthread_create(&students[i], NULL, student, &student_ids[i]);
     }
     
-    // Join threads (optional)
+    // Join threads
     pthread_join(ta_thread, NULL);
     for (int i = 0; i < NUM_STUDENTS; i++) {
         pthread_join(students[i], NULL);
